@@ -66,47 +66,12 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`usuario`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `mydb`.`usuario` (
-  `id_usuario` INT NOT NULL AUTO_INCREMENT ,
-  `nome` VARCHAR(70) NOT NULL ,
-  `dt_nascimento` DATE NULL ,
-  `id_telefone` INT NOT NULL ,
-  `id_endereco` INT NOT NULL ,
-  PRIMARY KEY (`id_usuario`) ,
-  INDEX `fk_usuario_telefone1_idx` (`id_telefone` ASC) ,
-  INDEX `fk_usuario_endereco1_idx` (`id_endereco` ASC) ,
-  CONSTRAINT `fk_usuario_telefone1`
-    FOREIGN KEY (`id_telefone` )
-    REFERENCES `mydb`.`telefone` (`id_telefone` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_usuario_endereco1`
-    FOREIGN KEY (`id_endereco` )
-    REFERENCES `mydb`.`endereco` (`id_endereco` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `mydb`.`tipo_usuario`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`tipo_usuario` (
   `id_tipo_usuario` INT NOT NULL ,
   `nm_perfil` VARCHAR(15) NOT NULL ,
   PRIMARY KEY (`id_tipo_usuario`) )
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `mydb`.`perfil`
--- -----------------------------------------------------
-CREATE  TABLE IF NOT EXISTS `mydb`.`perfil` (
-  `id_perfil` INT NOT NULL ,
-  `nm_perfil` VARCHAR(100) NOT NULL ,
-  PRIMARY KEY (`id_perfil`) )
 ENGINE = InnoDB;
 
 
@@ -121,6 +86,72 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `mydb`.`email`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`email` (
+  `id_email` INT NOT NULL ,
+  `em_email` VARCHAR(45) NOT NULL ,
+  `id_situacao` INT NOT NULL ,
+  PRIMARY KEY (`id_email`) ,
+  INDEX `fk_email_situacao1_idx` (`id_situacao` ASC) ,
+  CONSTRAINT `fk_email_situacao1`
+    FOREIGN KEY (`id_situacao` )
+    REFERENCES `mydb`.`situacao` (`id_situacao` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`usuario`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`usuario` (
+  `id_usuario` INT NOT NULL AUTO_INCREMENT ,
+  `nome` VARCHAR(70) NOT NULL ,
+  `dt_nascimento` DATE NULL ,
+  `id_telefone` INT NOT NULL ,
+  `id_endereco` INT NOT NULL ,
+  `id_tipo_usuario` INT NOT NULL ,
+  `id_email` INT NOT NULL ,
+  PRIMARY KEY (`id_usuario`) ,
+  INDEX `fk_usuario_telefone1_idx` (`id_telefone` ASC) ,
+  INDEX `fk_usuario_endereco1_idx` (`id_endereco` ASC) ,
+  INDEX `fk_usuario_tipo_usuario1_idx` (`id_tipo_usuario` ASC) ,
+  INDEX `fk_usuario_email1_idx` (`id_email` ASC) ,
+  CONSTRAINT `fk_usuario_telefone1`
+    FOREIGN KEY (`id_telefone` )
+    REFERENCES `mydb`.`telefone` (`id_telefone` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_endereco1`
+    FOREIGN KEY (`id_endereco` )
+    REFERENCES `mydb`.`endereco` (`id_endereco` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_tipo_usuario1`
+    FOREIGN KEY (`id_tipo_usuario` )
+    REFERENCES `mydb`.`tipo_usuario` (`id_tipo_usuario` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_usuario_email1`
+    FOREIGN KEY (`id_email` )
+    REFERENCES `mydb`.`email` (`id_email` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `mydb`.`perfil`
+-- -----------------------------------------------------
+CREATE  TABLE IF NOT EXISTS `mydb`.`perfil` (
+  `id_perfil` INT NOT NULL ,
+  `nm_perfil` VARCHAR(100) NOT NULL ,
+  PRIMARY KEY (`id_perfil`) )
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `mydb`.`login`
 -- -----------------------------------------------------
 CREATE  TABLE IF NOT EXISTS `mydb`.`login` (
@@ -129,20 +160,13 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`login` (
   `senha` VARCHAR(45) NOT NULL ,
   `dt_visita` DATETIME NULL ,
   `dt_registro` DATETIME NULL ,
-  `id_tipo_usuario` INT NOT NULL ,
   `id_usuario` INT NOT NULL ,
   `id_perfil` INT NOT NULL ,
   `id_situacao` INT NOT NULL ,
   PRIMARY KEY (`id_login`) ,
-  INDEX `fk_login_perfil_usuario1_idx` (`id_tipo_usuario` ASC) ,
   INDEX `fk_login_usuario1_idx` (`id_usuario` ASC) ,
   INDEX `fk_login_perfil1_idx` (`id_perfil` ASC) ,
   INDEX `fk_login_situacao1_idx` (`id_situacao` ASC) ,
-  CONSTRAINT `fk_login_perfil_usuario1`
-    FOREIGN KEY (`id_tipo_usuario` )
-    REFERENCES `mydb`.`tipo_usuario` (`id_tipo_usuario` )
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
   CONSTRAINT `fk_login_usuario1`
     FOREIGN KEY (`id_usuario` )
     REFERENCES `mydb`.`usuario` (`id_usuario` )
@@ -185,11 +209,13 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`cliente` (
   `id_endereco` INT NOT NULL ,
   `id_telefone` INT NOT NULL ,
   `id_tipo_cliente` INT NOT NULL ,
+  `id_email` INT NOT NULL ,
   PRIMARY KEY (`id_cliente`) ,
   INDEX `fk_cliente_usuario1_idx` (`id_usuario` ASC) ,
   INDEX `fk_cliente_endereco1_idx` (`id_endereco` ASC) ,
   INDEX `fk_cliente_telefone1_idx` (`id_telefone` ASC) ,
   INDEX `fk_cliente_perfil_cliente1_idx` (`id_tipo_cliente` ASC) ,
+  INDEX `fk_cliente_email1_idx` (`id_email` ASC) ,
   CONSTRAINT `fk_cliente_usuario1`
     FOREIGN KEY (`id_usuario` )
     REFERENCES `mydb`.`usuario` (`id_usuario` )
@@ -208,6 +234,11 @@ CREATE  TABLE IF NOT EXISTS `mydb`.`cliente` (
   CONSTRAINT `fk_cliente_perfil_cliente1`
     FOREIGN KEY (`id_tipo_cliente` )
     REFERENCES `mydb`.`tipo_cliente` (`id_tipo_cliente` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_cliente_email1`
+    FOREIGN KEY (`id_email` )
+    REFERENCES `mydb`.`email` (`id_email` )
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
