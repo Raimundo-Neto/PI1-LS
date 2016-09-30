@@ -1,0 +1,994 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>DBdoc</title> 
+</head> 
+<style type="text/css"> 
+	table {width: 100%; border-collapse: collapse;} 
+	table, td, th {border: 1px solid black;} 
+</style> 
+<body> 
+<h1>Liker_Service</h1> 
+<ol> 
+<li><a href="#usuario">usuario</a> (7 campos)</li><li><a href="#tipo_usuario">tipo_usuario</a> (2 campos)</li><li><a href="#login">login</a> (8 campos)</li><li><a href="#avaliacao">avaliacao</a> (4 campos)</li><li><a href="#comentario">comentario</a> (4 campos)</li><li><a href="#cliente">cliente</a> (11 campos)</li><li><a href="#tipo_cliente">tipo_cliente</a> (2 campos)</li><li><a href="#seguimento">seguimento</a> (3 campos)</li><li><a href="#ramo">ramo</a> (3 campos)</li><li><a href="#servico">servico</a> (3 campos)</li><li><a href="#seg_ramo">seg_ramo</a> (3 campos)</li><li><a href="#cliente_seguimento_ramo">cliente_seguimento_ramo</a> (4 campos)</li><li><a href="#endereco">endereco</a> (7 campos)</li><li><a href="#telefone">telefone</a> (3 campos)</li><li><a href="#clie_serv">clie_serv</a> (3 campos)</li><li><a href="#perfil_controller_action">perfil_controller_action</a> (4 campos)</li><li><a href="#perfil">perfil</a> (2 campos)</li><li><a href="#action">action</a> (2 campos)</li><li><a href="#controller">controller</a> (2 campos)</li><li><a href="#situacao">situacao</a> (2 campos)</li><li><a href="#cidade">cidade</a> (3 campos)</li><li><a href="#estado">estado</a> (3 campos)</li><li><a href="#email">email</a> (3 campos)</li><li><a href="#nota">nota</a> (2 campos)</li><li><a href="#avaliacao_nota">avaliacao_nota</a> (3 campos)</li></ol> 
+<ol> 
+<li id="usuario"> 
+<h2>usuario</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_usuario</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Identificador do usuario</td> 
+</tr> 
+<tr> 
+   <td>nome</td> 
+   <td>VARCHAR(70)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do usuario</td> 
+</tr> 
+<tr> 
+   <td>dt_nascimento</td> 
+   <td>DATE</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Data de nascimento</td> 
+</tr> 
+<tr> 
+   <td>id_telefone</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador de telefone</td> 
+</tr> 
+<tr> 
+   <td>id_endereco</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do endereço</td> 
+</tr> 
+<tr> 
+   <td>id_tipo_usuario</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador tipo de usuario</td> 
+</tr> 
+<tr> 
+   <td>id_email</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>FIdentificador do email</td> 
+</tr> 
+</table> 
+</li> 
+<li id="tipo_usuario"> 
+<h2>tipo_usuario</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_tipo_usuario</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do tipo de usuario</td> 
+</tr> 
+<tr> 
+   <td>nm_perfil</td> 
+   <td>VARCHAR(15)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do tipo de usuario</td> 
+</tr> 
+</table> 
+</li> 
+<li id="login"> 
+<h2>login</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_login</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td>AUTO_INCREMENT</td> 
+    <td>Identificador do login</td> 
+</tr> 
+<tr> 
+   <td>id_email</td> 
+   <td>VARCHAR(70)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do email</td> 
+</tr> 
+<tr> 
+   <td>senha</td> 
+   <td>VARCHAR(45)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Senha do login</td> 
+</tr> 
+<tr> 
+   <td>dt_visita</td> 
+   <td>DATETIME</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Data de visita</td> 
+</tr> 
+<tr> 
+   <td>dt_registro</td> 
+   <td>DATETIME</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Data de registro</td> 
+</tr> 
+<tr> 
+   <td>id_usuario</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do usuario</td> 
+</tr> 
+<tr> 
+   <td>id_perfil</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do perfil</td> 
+</tr> 
+<tr> 
+   <td>id_situacao</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da situação</td> 
+</tr> 
+</table> 
+</li> 
+<li id="avaliacao"> 
+<h2>avaliacao</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_avaliacao</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da avaliação</td> 
+</tr> 
+<tr> 
+   <td>media</td> 
+   <td>FLOAT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Média das notas recebidas</td> 
+</tr> 
+<tr> 
+   <td>id_usuario</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do usuario</td> 
+</tr> 
+<tr> 
+   <td>id_cliente</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do cliente</td> 
+</tr> 
+</table> 
+</li> 
+<li id="comentario"> 
+<h2>comentario</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_comentario</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do comentario</td> 
+</tr> 
+<tr> 
+   <td>tx_comentario</td> 
+   <td>TINYTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Texto do Comentario</td> 
+</tr> 
+<tr> 
+   <td>id_usuario</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do usuario</td> 
+</tr> 
+<tr> 
+   <td>id_cliente</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do cliente</td> 
+</tr> 
+</table> 
+</li> 
+<li id="cliente"> 
+<h2>cliente</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_cliente</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do cliente</td> 
+</tr> 
+<tr> 
+   <td>nm_cliente</td> 
+   <td>VARCHAR(150)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do cliente</td> 
+</tr> 
+<tr> 
+   <td>cpf_cliente</td> 
+   <td>VARCHAR(11)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>CPF do cliente</td> 
+</tr> 
+<tr> 
+   <td>cnpj_cliente</td> 
+   <td>VARCHAR(14)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>CNPJ do cliente</td> 
+</tr> 
+<tr> 
+   <td>rg_cliente</td> 
+   <td>VARCHAR(10)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>RG do cliente</td> 
+</tr> 
+<tr> 
+   <td>desc_cliente</td> 
+   <td>TEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Texto descritivo do cliente</td> 
+</tr> 
+<tr> 
+   <td>id_usuario</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do usuario</td> 
+</tr> 
+<tr> 
+   <td>id_endereco</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do endereço</td> 
+</tr> 
+<tr> 
+   <td>id_telefone</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do telefone</td> 
+</tr> 
+<tr> 
+   <td>id_tipo_cliente</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do tipo de cliente</td> 
+</tr> 
+<tr> 
+   <td>id_email</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do email</td> 
+</tr> 
+</table> 
+</li> 
+<li id="tipo_cliente"> 
+<h2>tipo_cliente</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_tipo_cliente</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do tipo de cliente</td> 
+</tr> 
+<tr> 
+   <td>nm_perfil_cliente</td> 
+   <td>VARCHAR(20)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do perfil do cliente</td> 
+</tr> 
+</table> 
+</li> 
+<li id="seguimento"> 
+<h2>seguimento</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_seguimento</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do seguimento</td> 
+</tr> 
+<tr> 
+   <td>nm_seguimento</td> 
+   <td>VARCHAR(60)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>nome do seguimento</td> 
+</tr> 
+<tr> 
+   <td>desc_seguimento</td> 
+   <td>TINYTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Descrição do seguimento</td> 
+</tr> 
+</table> 
+</li> 
+<li id="ramo"> 
+<h2>ramo</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_ramo</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do ramo</td> 
+</tr> 
+<tr> 
+   <td>nm_ramo</td> 
+   <td>VARCHAR(60)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do ramo</td> 
+</tr> 
+<tr> 
+   <td>desc_ramo</td> 
+   <td>TINYTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Descrição do ramo</td> 
+</tr> 
+</table> 
+</li> 
+<li id="servico"> 
+<h2>servico</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_servico</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do serviço</td> 
+</tr> 
+<tr> 
+   <td>nm_servico</td> 
+   <td>VARCHAR(45)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do serviço</td> 
+</tr> 
+<tr> 
+   <td>desc_servico</td> 
+   <td>TINYTEXT</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Descrição do serviço</td> 
+</tr> 
+</table> 
+</li> 
+<li id="seg_ramo"> 
+<h2>seg_ramo</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_seg_ramo</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do seguimento_ramo</td> 
+</tr> 
+<tr> 
+   <td>id_seguimento</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do seguimento</td> 
+</tr> 
+<tr> 
+   <td>id_ramo</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do ramo</td> 
+</tr> 
+</table> 
+</li> 
+<li id="cliente_seguimento_ramo"> 
+<h2>cliente_seguimento_ramo</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_cliente_seguimento_ramo</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do cliente_seguimento_ramo</td> 
+</tr> 
+<tr> 
+   <td>id_cliente</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do cliente</td> 
+</tr> 
+<tr> 
+   <td>id_seguimento</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do seguimento</td> 
+</tr> 
+<tr> 
+   <td>id_ramo</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do ramo</td> 
+</tr> 
+</table> 
+</li> 
+<li id="endereco"> 
+<h2>endereco</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_endereco</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do endereço</td> 
+</tr> 
+<tr> 
+   <td>nm_logradouro</td> 
+   <td>VARCHAR(200)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Nome do logradouro</td> 
+</tr> 
+<tr> 
+   <td>nr_numero</td> 
+   <td>VARCHAR(45)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Número do endreço</td> 
+</tr> 
+<tr> 
+   <td>nm_complemento</td> 
+   <td>VARCHAR(200)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Nome do complemento</td> 
+</tr> 
+<tr> 
+   <td>nm_bairro</td> 
+   <td>VARCHAR(200)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Nome do bairro</td> 
+</tr> 
+<tr> 
+   <td>nr_cep</td> 
+   <td>VARCHAR(8)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Número do CEP</td> 
+</tr> 
+<tr> 
+   <td>id_cidade</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da cidade</td> 
+</tr> 
+</table> 
+</li> 
+<li id="telefone"> 
+<h2>telefone</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_telefone</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do telefone</td> 
+</tr> 
+<tr> 
+   <td>nr_ddd</td> 
+   <td>VARCHAR(3)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Número do DDD</td> 
+</tr> 
+<tr> 
+   <td>nr_telefone</td> 
+   <td>VARCHAR(20)</td> 
+    <td>SI</td> 
+    <td> - </td> 
+    <td>Número do telefone</td> 
+</tr> 
+</table> 
+</li> 
+<li id="clie_serv"> 
+<h2>clie_serv</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_clie_serv</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador Cliente_serviço</td> 
+</tr> 
+<tr> 
+   <td>id_cliente</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do cliente</td> 
+</tr> 
+<tr> 
+   <td>id_servico</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do serviço</td> 
+</tr> 
+</table> 
+</li> 
+<li id="perfil_controller_action"> 
+<h2>perfil_controller_action</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_perfil_controller_action</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do perfil_controller_action</td> 
+</tr> 
+<tr> 
+   <td>id_perfil</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do perfil</td> 
+</tr> 
+<tr> 
+   <td>id_controller</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do controller</td> 
+</tr> 
+<tr> 
+   <td>id_action</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da action</td> 
+</tr> 
+</table> 
+</li> 
+<li id="perfil"> 
+<h2>perfil</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_perfil</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do perfil</td> 
+</tr> 
+<tr> 
+   <td>nm_perfil</td> 
+   <td>VARCHAR(100)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do perfil</td> 
+</tr> 
+</table> 
+</li> 
+<li id="action"> 
+<h2>action</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_action</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da action</td> 
+</tr> 
+<tr> 
+   <td>nm_action</td> 
+   <td>VARCHAR(100)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome da action</td> 
+</tr> 
+</table> 
+</li> 
+<li id="controller"> 
+<h2>controller</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_controller</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do controller</td> 
+</tr> 
+<tr> 
+   <td>nm_controller</td> 
+   <td>VARCHAR(100)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>nome do controller</td> 
+</tr> 
+</table> 
+</li> 
+<li id="situacao"> 
+<h2>situacao</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_situacao</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da situação</td> 
+</tr> 
+<tr> 
+   <td>desc_situacao</td> 
+   <td>VARCHAR(10)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Descrição da situação</td> 
+</tr> 
+</table> 
+</li> 
+<li id="cidade"> 
+<h2>cidade</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_cidade</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da cidade</td> 
+</tr> 
+<tr> 
+   <td>nm_cidade</td> 
+   <td>VARCHAR(100)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome da cidade</td> 
+</tr> 
+<tr> 
+   <td>id_estado</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do estado</td> 
+</tr> 
+</table> 
+</li> 
+<li id="estado"> 
+<h2>estado</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_estado</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do estado</td> 
+</tr> 
+<tr> 
+   <td>nm_estado</td> 
+   <td>VARCHAR(150)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Nome do estado</td> 
+</tr> 
+<tr> 
+   <td>sg_estado</td> 
+   <td>VARCHAR(2)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Sigla do estado</td> 
+</tr> 
+</table> 
+</li> 
+<li id="email"> 
+<h2>email</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_email</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador do email</td> 
+</tr> 
+<tr> 
+   <td>em_email</td> 
+   <td>VARCHAR(45)</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Email</td> 
+</tr> 
+<tr> 
+   <td>id_situacao</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da situação</td> 
+</tr> 
+</table> 
+</li> 
+<li id="nota"> 
+<h2>nota</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_nota</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da nota</td> 
+</tr> 
+<tr> 
+   <td>valor</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Valor da nota</td> 
+</tr> 
+</table> 
+</li> 
+<li id="avaliacao_nota"> 
+<h2>avaliacao_nota</h2> 
+<p></p> 
+<table> 
+<tr> 
+<th>CAMPO</th> 
+<th>TIPO</th> 
+<th>NULO</th> 
+<th>EXTRA</th> 
+<th>COMENTARIOS</th> 
+</tr> 
+<tr> 
+   <td>id_avaliacao_nota</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da avaliação_nota</td> 
+</tr> 
+<tr> 
+   <td>id_nota</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da nota</td> 
+</tr> 
+<tr> 
+   <td>id_avaliacao</td> 
+   <td>INT</td> 
+    <td>NO</td> 
+    <td> - </td> 
+    <td>Identificador da avalição</td> 
+</tr> 
+</table> 
+</li> 
+</ol> 
+</body> 
+</html>
