@@ -3,7 +3,7 @@
  * Zend Framework (http://framework.zend.com/)
  *
  * @link      http://github.com/zendframework/ZendSkeletonApplication for the canonical source repository
- * @copyright Copyright (c) 2005-2015 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright Copyright (c) 2005-2014 Zend Technologies USA Inc. (http://www.zend.com)
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
@@ -17,38 +17,8 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'Application\Controller\Index',
+                        'controller' => 'application-index',
                         'action'     => 'index',
-                    ),
-                ),
-            ),
-            // The following is a route to simplify getting started creating
-            // new controllers and actions without needing to create a new
-            // module. Simply drop new controllers in, and you can access them
-            // using the path /application/:controller/:action
-            'application' => array(
-                'type'    => 'Literal',
-                'options' => array(
-                    'route'    => '/application',
-                    'defaults' => array(
-                        '__NAMESPACE__' => 'Application\Controller',
-                        'controller'    => 'Index',
-                        'action'        => 'index',
-                    ),
-                ),
-                'may_terminate' => true,
-                'child_routes' => array(
-                    'default' => array(
-                        'type'    => 'Segment',
-                        'options' => array(
-                            'route'    => '/[:controller[/:action]]',
-                            'constraints' => array(
-                                'controller' => '[a-zA-Z][a-zA-Z0-9_-]*',
-                                'action'     => '[a-zA-Z][a-zA-Z0-9_-]*',
-                            ),
-                            'defaults' => array(
-                            ),
-                        ),
                     ),
                 ),
             ),
@@ -59,24 +29,32 @@ return array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
-        'factories' => array(
-            'translator' => 'Zend\Mvc\Service\TranslatorServiceFactory',
+        'aliases' => array(
+            'translator' => 'MvcTranslator',
         ),
+        'factories'  =>  array ( 
+            'navigation'  =>  'Zend\Navigation\Service\DefaultNavigationFactory' ,  // <- Adicione 
+        ), 
     ),
-    'translator' => array(
-        'locale' => 'en_US',
+    'translator' => array(        
         'translation_file_patterns' => array(
             array(
                 'type'     => 'gettext',
                 'base_dir' => __DIR__ . '/../language',
                 'pattern'  => '%s.mo',
+                'text_domain' => __NAMESPACE__, // Sem isso, o textDomain, usado pelo Zend\I18n\Translator\Translator fica 'default' e como o 'default' já foi definido quando foi adicionado no Application/config/module.config.php há um conflito e fica prevalecendo o do modulo Application
             ),
         ),
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
+            'application-index' => 'Application\Controller\IndexController',            
+            'application-parametrizacao' => 'Application\Controller\ParametrizacaoController',
+            'application-event' => 'Application\Controller\EventController',
         ),
+    ),
+    'module_layouts' => array(
+        'Site' => 'layout/layout',
     ),
     'view_manager' => array(
         'display_not_found_reason' => true,
@@ -85,8 +63,6 @@ return array(
         'not_found_template'       => 'error/404',
         'exception_template'       => 'error/index',
         'template_map' => array(
-            'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'application/index/index' => __DIR__ . '/../view/application/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),
@@ -98,6 +74,37 @@ return array(
     'console' => array(
         'router' => array(
             'routes' => array(
+            ),
+        ),
+    ),    
+    'navigation' => array(
+        'default' => array(
+            array(
+                'label' => 'Home',
+                'route' => 'home',
+                'resource'=> 'home'
+            ),
+            array(
+                'label' => 'Login',
+                'route' => 'login',
+                'resource'=> 'login'
+//                'pages' => array(
+//                    array(
+//                        'label' => 'Add',
+//                        'route' => 'login',
+//                        'action' => 'add',
+//                    ),
+//                    array(
+//                        'label' => 'Edit',
+//                        'route' => 'login',
+//                        'action' => 'edit',
+//                    ),
+//                    array(
+//                        'label' => 'Delete',
+//                        'route' => 'login',
+//                        'action' => 'delete',
+//                    ),
+//                ),
             ),
         ),
     ),
