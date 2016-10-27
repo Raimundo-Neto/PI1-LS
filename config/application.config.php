@@ -11,18 +11,9 @@ return array(
         'CompactAsset', //Compacta o Javascript e CSS para retornar em apenas uma requisição (Responsável pela minificar o css e js: compila os arquivos em um só)
         //Ronaldo 02/03/2016 - Responsável por melhorar o desempenho da aplicação
         'Principal',
-        'Perfil',
         'Config',
-        'Controller',
-        'Action',
-        'Permissao',
-        'PerfilControllerAction',
         'Infra',
-        'Usuario',
-        'Sexo',
-        'TipoUsuario',
-        'SituacaoUsuario',
-        'Email',
+
     ),
     'module_listener_options' => array(
         'module_paths' => array(
